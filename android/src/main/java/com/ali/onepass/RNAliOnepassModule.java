@@ -146,7 +146,7 @@ public class RNAliOnepassModule extends ReactContextBaseJavaModule implements To
      * 退出登录授权⻚ , 授权⻚的退出完全由 APP  控制, 注意需要在主线程调用此函数    !!!!
      * SDK  完成回调后,不会立即关闭授权⻚面,需要开发者主动调用离开授权⻚面方法去完成⻚面的关闭
      *
-     * @param promise 
+     * @param promise
      */
     @ReactMethod
     public void quitLoginPage(final Promise promise) {
