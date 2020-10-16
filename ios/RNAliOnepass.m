@@ -149,6 +149,8 @@ RCT_EXPORT_METHOD(setUIConfig:(NSDictionary *)config resolve:(RCTPromiseResolveB
     if (navText != nil && navTextColor != nil && navTextSize != nil) {
         tXCustomModel.navTitle = [[NSAttributedString alloc]initWithString:navText attributes:@{NSForegroundColorAttributeName: [self colorWithHexString:navTextColor], NSFontAttributeName:[UIFont systemFontOfSize:[navTextSize doubleValue]]}];
     }
+    tXCustomModel.privacyNavTitleFont=[navTextSize doubleValue];
+    tXCustomModel.privacyNavTitleColor=navTextColor;
     NSString *navReturnImgPath = [config objectForKey:[self methodName2KeyName:@"setNavReturnImgPath"]];
     if (navReturnImgPath != nil) {
         tXCustomModel.navBackImage = [UIImage imageNamed:navReturnImgPath];
@@ -158,7 +160,7 @@ RCT_EXPORT_METHOD(setUIConfig:(NSDictionary *)config resolve:(RCTPromiseResolveB
     NSString *navReturnImgHeight = [config objectForKey:[self methodName2KeyName:@"setNavReturnImgHeight"]];
     tXCustomModel.navBackButtonFrameBlock = ^CGRect(CGSize screenSize, CGSize superViewSize, CGRect frame) {
         CGFloat x = frame.origin.x;
-        CGFloat y = frame.origin.y;
+        CGFloat y = frame.origin.y-10;
         CGFloat width = frame.size.width;
         CGFloat height = frame.size.height;
         if (navReturnImgWidth != nil) {
