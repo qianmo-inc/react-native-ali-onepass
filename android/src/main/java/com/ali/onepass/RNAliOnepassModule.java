@@ -251,6 +251,9 @@ public class RNAliOnepassModule extends ReactContextBaseJavaModule implements To
         if (config.hasKey(methodName2KeyName("setNavTextSize"))) {
             builder.setNavTextSize(config.getInt(methodName2KeyName("setNavTextSize")));
         }
+        if (config.hasKey(methodName2KeyName("setNavReturnHidden"))) {
+            builder.setNavReturnHidden(config.getBoolean(methodName2KeyName("setNavReturnHidden")));
+        }
         if (config.hasKey(methodName2KeyName("setNavReturnImgPath"))) {
             builder.setNavReturnImgPath(config.getString(methodName2KeyName("setNavReturnImgPath")));
             builder.setNavReturnScaleType(ImageView.ScaleType.FIT_CENTER);

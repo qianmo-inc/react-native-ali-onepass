@@ -151,7 +151,8 @@ RCT_EXPORT_METHOD(setUIConfig:(NSDictionary *)config resolve:(RCTPromiseResolveB
     }
     //协议页导航栏字体大小及颜色
     NSString *privacyNavTitleColor = [config objectForKey:[self methodName2KeyName:@"setPrivacyNavTitleColor"]];
-       NSString *privacyNavTitleFont = [config objectForKey:[self methodName2KeyName:@"setPrivacyNavTitleFont"]];
+    NSString *privacyNavTitleFont = [config objectForKey:[self methodName2KeyName:@"setPrivacyNavTitleFont"]];
+    NSLog(@"%d", [privacyNavTitleFont doubleValue]);
     tXCustomModel.privacyNavTitleFont=[UIFont systemFontOfSize:[privacyNavTitleFont doubleValue]];
     tXCustomModel.privacyNavTitleColor=[self colorWithHexString:privacyNavTitleColor];
     NSString *navReturnImgPath = [config objectForKey:[self methodName2KeyName:@"setNavReturnImgPath"]];
@@ -159,21 +160,26 @@ RCT_EXPORT_METHOD(setUIConfig:(NSDictionary *)config resolve:(RCTPromiseResolveB
         tXCustomModel.navBackImage = [UIImage imageNamed:navReturnImgPath];
         tXCustomModel.privacyNavBackImage = [UIImage imageNamed:navReturnImgPath];
     }
-//    NSString *navReturnImgWidth = [config objectForKey:[self methodName2KeyName:@"setNavReturnImgWidth"]];
-//    NSString *navReturnImgHeight = [config objectForKey:[self methodName2KeyName:@"setNavReturnImgHeight"]];
-//    tXCustomModel.navBackButtonFrameBlock = ^CGRect(CGSize screenSize, CGSize superViewSize, CGRect frame) {
-//        CGFloat x = frame.origin.x;
-//        CGFloat y = frame.origin.y-10;
-//        CGFloat width = frame.size.width;
-//        CGFloat height = frame.size.height;
-//        if (navReturnImgWidth != nil) {
-//            width = [navReturnImgWidth floatValue];
-//        }
-//        if (navReturnImgHeight != nil) {
-//            height = [navReturnImgHeight floatValue];
-//        }
-//        return CGRectMake(x, y, width, height);
-//    };
+    // 返回按钮是否隐藏
+    NSString *navReturnHidden = [config objectForKey:[self methodName2KeyName:@"setNavReturnHidden"]];
+    if (navReturnHidden != nil) {
+        tXCustomModel.navIsHidden = [navReturnHidden boolValue];
+    }
+    NSString *navReturnImgWidth = [config objectForKey:[self methodName2KeyName:@"setNavReturnImgWidth"]];
+    NSString *navReturnImgHeight = [config objectForKey:[self methodName2KeyName:@"setNavReturnImgHeight"]];
+    tXCustomModel.navBackButtonFrameBlock = ^CGRect(CGSize screenSize, CGSize superViewSize, CGRect frame) {
+        CGFloat x = frame.origin.x;
+        CGFloat y = frame.origin.y+20.0;
+        CGFloat width = frame.size.width;
+        CGFloat height = frame.size.height;
+        if (navReturnImgWidth != nil) {
+            width = [navReturnImgWidth floatValue];
+        }
+        if (navReturnImgHeight != nil) {
+            height = [navReturnImgHeight floatValue];
+        }
+        return CGRectMake(x, y, width, height);
+    };
     // logo
     NSString *logoImgPath = [config objectForKey:[self methodName2KeyName:@"setLogoImgPath"]];
     if (logoImgPath != nil) {
