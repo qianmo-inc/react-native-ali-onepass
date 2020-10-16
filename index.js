@@ -31,7 +31,7 @@ export async function prefetch(timeOut) {
   if (Platform.OS === 'android') {
     return await RNAliOnepass.prefetch(timeOut);
   } else {
-    return await RNAliOnepass.prefetch(timeOut / 1000);
+    return await RNAliOnepass.prefetch();
   }
 }
 
@@ -43,7 +43,7 @@ export async function onePass(timeOut) {
   if (Platform.OS === 'android') {
     return await RNAliOnepass.onePass(timeOut);
   } else {
-    return await RNAliOnepass.onePass(timeOut / 1000);
+    return await RNAliOnepass.onePass();
   }
 }
 
