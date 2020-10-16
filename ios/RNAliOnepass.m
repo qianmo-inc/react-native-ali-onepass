@@ -54,7 +54,7 @@ RCT_EXPORT_METHOD(prefetch:(float)timeout resolve:(RCTPromiseResolveBlock)resolv
     if(![self checkInit:reject]){
         return;
     }
-    NSLog(@"prefetch timeout = %@", timeout);
+    NSLog(@"prefetch timeout = %f", timeout);
     [tXCommonHandler accelerateLoginPageWithTimeout:timeout complete:^(NSDictionary * _Nonnull resultDic) {
         NSString *resultCode = [resultDic objectForKey:@"resultCode"];
         if(resultCode==PNSCodeSuccess) {
@@ -70,7 +70,7 @@ RCT_EXPORT_METHOD(onePass:(float)timeout resolve:(RCTPromiseResolveBlock)resolve
     if(![self checkInit:reject]){
         return;
     }
-    NSLog(@"onePass timeout = %@", timeout);
+    NSLog(@"onePass timeout = %f", timeout);
     [tXCommonHandler getLoginTokenWithTimeout:timeout controller:[UIApplication sharedApplication].keyWindow.rootViewController model:tXCustomModel complete:^(NSDictionary * _Nonnull resultDic) {
         NSLog(@"resultDic = %@", resultDic);
         NSString *resultCode = [resultDic objectForKey:@"resultCode"];
