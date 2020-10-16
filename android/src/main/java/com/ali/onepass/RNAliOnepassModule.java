@@ -454,7 +454,9 @@ public class RNAliOnepassModule extends ReactContextBaseJavaModule implements To
      * 其他
      */
     private void setOtherUI(AuthUIConfig.Builder builder, ReadableMap config) {
-
+        if (config.hasKey(methodName2KeyName("setPageBackgroundPath"))) {
+            builder.setPageBackgroundPath(config.getString(methodName2KeyName("setPageBackgroundPath")));
+        }
     }
 
     private void sendEvent(String eventName, WritableMap params) {
