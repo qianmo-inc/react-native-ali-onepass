@@ -50,7 +50,7 @@ RCT_EXPORT_METHOD(checkEnvAvailable:(RCTPromiseResolveBlock)resolve reject:(RCTP
 }
 
 // 预取号 加速页面弹起
-RCT_EXPORT_METHOD(prefetch:(NSTimeInterval)timeout resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
+RCT_EXPORT_METHOD(prefetch:(float)timeout resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
     if(![self checkInit:reject]){
         return;
     }
@@ -66,7 +66,7 @@ RCT_EXPORT_METHOD(prefetch:(NSTimeInterval)timeout resolve:(RCTPromiseResolveBlo
 }
 
 // 一键登录 页面弹起
-RCT_EXPORT_METHOD(onePass:(NSTimeInterval)timeout resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
+RCT_EXPORT_METHOD(onePass:(float)timeout resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
     if(![self checkInit:reject]){
         return;
     }
