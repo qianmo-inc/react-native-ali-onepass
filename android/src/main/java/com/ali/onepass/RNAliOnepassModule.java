@@ -59,15 +59,19 @@ public class RNAliOnepassModule extends ReactContextBaseJavaModule implements To
     }
 
     /**
-     * SDK 环境检查函数,检查终端是否支持号码认证
+     * SDK 环境检查函数,检查终端是否支持号码认证,通过TokenResultListener返回code
+     * type 1：本机号码校验 2: ⼀键登录
+     * <p>
+     * 600024 终端⽀持认证
+     * 600013 系统维护，功能不可⽤
      */
     @ReactMethod
-    public void checkEnvAvailable(final Promise promise) {
+    public void checkEnvAvailable(int type, final Promise promise) {
         if (!checkInit(promise)) {
             return;
         }
-        boolean available = phoneNumberAuthHelper.checkEnvAvailable();
-        promise.resolve(available);
+        phoneNumberAuthHelper.checkEnvAvailable(type);
+        promise.resolve("");
     }
 
     @Override

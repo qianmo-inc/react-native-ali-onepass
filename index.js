@@ -9,10 +9,12 @@ export async function init(businessId) {
 
 /**
  * 调用下面接口前先校验是否支持
+ *
+ * type 1：本机号码校验 2: ⼀键登录
  * @return {Promise<*>}
  */
-export async function checkEnvAvailable() {
-  return await RNAliOnepass.checkEnvAvailable();
+export async function checkEnvAvailable(type = 2) {
+  return await RNAliOnepass.checkEnvAvailable(type);
 }
 
 /*******************************************(以下初始化后再调用)***********************************************/
@@ -95,6 +97,7 @@ export const RESULT_CODES = {
   600015: 600015, // 接口超时
   600017: 600017, // AppID 、 Appkey 解析失败
   600021: 600021, // 点击登录时检测到运营商已切换
+  600024: 600024, // 终端⽀持认证checkAuthEnvEnable回调
   700000: 700000, // 点击返回,用户取消免密登录
   700001: 700001, // 点击切换按钮,用户取消免密登录
   700002: 700002, // 点击登录按钮事件

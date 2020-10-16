@@ -56,6 +56,8 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.facebook.react:react-native:+'
-    implementation(name: 'AlicomPhoneNumberAuthSDK_L_Release_20191219_202532', ext: 'aar')
+    implementation(name: 'phoneNumber-L-AuthSDK-2.10.1', ext: 'aar')
     implementation 'com.alibaba:fastjson:1.2.60' // 配置对gson的依赖
+    implementation 'com.android.support:appcompat-v7:28.0.0' // 官方文档提示需要添加此依赖
+
 }
