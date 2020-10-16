@@ -14,7 +14,11 @@ export async function init(businessId) {
  * @return {Promise<*>}
  */
 export async function checkEnvAvailable(type = 2) {
-  return await RNAliOnepass.checkEnvAvailable(type);
+  if (Platform.OS === 'android') {
+    return await RNAliOnepass.checkEnvAvailable(type);
+  } else {
+    return await RNAliOnepass.checkEnvAvailable();
+  }
 }
 
 /*******************************************(以下初始化后再调用)***********************************************/
@@ -24,7 +28,11 @@ export async function checkEnvAvailable(type = 2) {
  * @return {Promise<*>}
  */
 export async function prefetch(timeOut) {
-  return await RNAliOnepass.prefetch(timeOut);
+  if (Platform.OS === 'android') {
+    return await RNAliOnepass.prefetch(timeOut);
+  } else {
+    return await RNAliOnepass.prefetch(timeOut / 1000);
+  }
 }
 
 /**
@@ -32,7 +40,11 @@ export async function prefetch(timeOut) {
  * @return {Promise<*>}
  */
 export async function onePass(timeOut) {
-  return await RNAliOnepass.onePass(timeOut);
+  if (Platform.OS === 'android') {
+    return await RNAliOnepass.onePass(timeOut);
+  } else {
+    return await RNAliOnepass.onePass(timeOut / 1000);
+  }
 }
 
 /**
