@@ -21,16 +21,16 @@ export async function checkEnvAvailable() {
  * 预加载
  * @return {Promise<*>}
  */
-export async function prefetch() {
-  return await RNAliOnepass.prefetch();
+export async function prefetch(timeOut) {
+  return await RNAliOnepass.prefetch(timeOut);
 }
 
 /**
  * 一键登录
  * @return {Promise<*>}
  */
-export async function onePass() {
-  return await RNAliOnepass.onePass();
+export async function onePass(timeOut) {
+  return await RNAliOnepass.onePass(timeOut);
 }
 
 /**
