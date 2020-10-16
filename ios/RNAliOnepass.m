@@ -50,11 +50,12 @@ RCT_EXPORT_METHOD(checkEnvAvailable:(RCTPromiseResolveBlock)resolve reject:(RCTP
 }
 
 // 预取号 加速页面弹起
-RCT_EXPORT_METHOD(prefetch:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
+RCT_EXPORT_METHOD(prefetch:(NSTimeInterval)timeout resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
     if(![self checkInit:reject]){
         return;
     }
-    [tXCommonHandler accelerateLoginPageWithTimeout:0.0 complete:^(NSDictionary * _Nonnull resultDic) {
+    NSLog(@"prefetch timeout = %@", timeout);
+    [tXCommonHandler accelerateLoginPageWithTimeout:timeout complete:^(NSDictionary * _Nonnull resultDic) {
         NSString *resultCode = [resultDic objectForKey:@"resultCode"];
         if(resultCode==PNSCodeSuccess) {
             resolve(@"");
@@ -65,11 +66,12 @@ RCT_EXPORT_METHOD(prefetch:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRej
 }
 
 // 一键登录 页面弹起
-RCT_EXPORT_METHOD(onePass:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
+RCT_EXPORT_METHOD(onePass:(NSTimeInterval)timeout resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject){
     if(![self checkInit:reject]){
         return;
     }
-    [tXCommonHandler getLoginTokenWithTimeout:0.0 controller:[UIApplication sharedApplication].keyWindow.rootViewController model:tXCustomModel complete:^(NSDictionary * _Nonnull resultDic) {
+    NSLog(@"onePass timeout = %@", timeout);
+    [tXCommonHandler getLoginTokenWithTimeout:timeout controller:[UIApplication sharedApplication].keyWindow.rootViewController model:tXCustomModel complete:^(NSDictionary * _Nonnull resultDic) {
         NSLog(@"resultDic = %@", resultDic);
         NSString *resultCode = [resultDic objectForKey:@"resultCode"];
         NSString *msg = [resultDic objectForKey:@"msg"];
@@ -152,7 +154,6 @@ RCT_EXPORT_METHOD(setUIConfig:(NSDictionary *)config resolve:(RCTPromiseResolveB
     //协议页导航栏字体大小及颜色
     NSString *privacyNavTitleColor = [config objectForKey:[self methodName2KeyName:@"setPrivacyNavTitleColor"]];
     NSString *privacyNavTitleFont = [config objectForKey:[self methodName2KeyName:@"setPrivacyNavTitleFont"]];
-    NSLog(@"%d", [privacyNavTitleFont doubleValue]);
     tXCustomModel.privacyNavTitleFont=[UIFont systemFontOfSize:[privacyNavTitleFont doubleValue]];
     tXCustomModel.privacyNavTitleColor=[self colorWithHexString:privacyNavTitleColor];
     NSString *navReturnImgPath = [config objectForKey:[self methodName2KeyName:@"setNavReturnImgPath"]];
