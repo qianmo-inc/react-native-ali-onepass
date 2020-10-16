@@ -326,11 +326,7 @@ RCT_EXPORT_METHOD(setUIConfig:(NSDictionary *)config resolve:(RCTPromiseResolveB
     if (checkboxHidden != nil) {
         tXCustomModel.checkBoxIsHidden = [checkboxHidden boolValue];
     }
-    // 背景图
-    NSString *screenImgPath = [config objectForKey:[self methodName2KeyName:@"setPageBackgroundPath"]];
-    if (screenImgPath != nil) {
-        tXCustomModel.pageBackgroundPath = [UIImage imageNamed:screenImgPath];
-    }
+    tXCustomModel.preferredStatusBarStyle = UIStatusBarStyleLightContent;
     resolve(@"");
 }
 
