@@ -141,6 +141,7 @@ RCT_EXPORT_METHOD(setUIConfig:(NSDictionary *)config resolve:(RCTPromiseResolveB
     NSString *navColor = [config objectForKey:[self methodName2KeyName:@"setNavColor"]];
     if (navColor != nil) {
         tXCustomModel.navColor = [self colorWithHexString:navColor];
+        tXCustomModel.privacyNavColor = [self colorWithHexString:navColor];
     }
     NSString *navText = [config objectForKey:[self methodName2KeyName:@"setNavText"]];
     NSString *navTextColor = [config objectForKey:[self methodName2KeyName:@"setNavTextColor"]];
@@ -325,11 +326,11 @@ RCT_EXPORT_METHOD(setUIConfig:(NSDictionary *)config resolve:(RCTPromiseResolveB
     if (checkboxHidden != nil) {
         tXCustomModel.checkBoxIsHidden = [checkboxHidden boolValue];
     }
-//    // 背景图
-//    NSString *screenImgPath = [config objectForKey:[self methodName2KeyName:@"setPageBackgroundPath"]];
-//    if (screenImgPath != nil) {
-//        tXCustomModel.pageBackgroundPath = [UIImage imageNamed:screenImgPath];
-//    }
+    // 背景图
+    NSString *screenImgPath = [config objectForKey:[self methodName2KeyName:@"setPageBackgroundPath"]];
+    if (screenImgPath != nil) {
+        tXCustomModel.pageBackgroundPath = [UIImage imageNamed:screenImgPath];
+    }
     resolve(@"");
 }
 
