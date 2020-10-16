@@ -149,8 +149,8 @@ RCT_EXPORT_METHOD(setUIConfig:(NSDictionary *)config resolve:(RCTPromiseResolveB
     if (navText != nil && navTextColor != nil && navTextSize != nil) {
         tXCustomModel.navTitle = [[NSAttributedString alloc]initWithString:navText attributes:@{NSForegroundColorAttributeName: [self colorWithHexString:navTextColor], NSFontAttributeName:[UIFont systemFontOfSize:[navTextSize doubleValue]]}];
     }
-    tXCustomModel.privacyNavTitleFont=[navTextSize doubleValue];
-    tXCustomModel.privacyNavTitleColor=navTextColor;
+    tXCustomModel.privacyNavTitleFont=[UIFont systemFontOfSize:[navTextSize doubleValue]];
+    tXCustomModel.privacyNavTitleColor=[self colorWithHexString:navTextColor];
     NSString *navReturnImgPath = [config objectForKey:[self methodName2KeyName:@"setNavReturnImgPath"]];
     if (navReturnImgPath != nil) {
         tXCustomModel.navBackImage = [UIImage imageNamed:navReturnImgPath];
