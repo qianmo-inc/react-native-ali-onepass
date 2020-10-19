@@ -338,7 +338,7 @@ RCT_EXPORT_METHOD(setUIConfig:(NSDictionary *)config resolve:(RCTPromiseResolveB
     if (checkboxHidden != nil) {
         tXCustomModel.checkBoxIsHidden = [checkboxHidden boolValue];
     }
-    tXCustomModel.preferredStatusBarStyle = UIStatusBarStyleLightContent;
+    tXCustomModel.preferredStatusBarStyle = UIStatusBarStyleDefault;
     resolve(@"");
 }
 
