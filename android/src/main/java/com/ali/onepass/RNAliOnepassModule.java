@@ -216,6 +216,17 @@ public class RNAliOnepassModule extends ReactContextBaseJavaModule implements To
     }
 
     /**
+     * 退出登录授权⻚时,授权⻚的 loading 消失由 APP 控制
+     *
+     * @param promise
+     */
+    @ReactMethod
+    public void closeAuthListener(final Promise promise) {
+        phoneNumberAuthHelper.setAuthListener(null);
+        promise.resolve("");
+    }
+
+    /**
      * 将方法名转为key名
      *
      * @param methodName

@@ -80,6 +80,14 @@ export async function setUIConfig(config) {
 }
 
 /**
+ * setUIConfig
+ * @param config
+ */
+export async function closeAuthListener() {
+  return await RNAliOnepass.closeAuthListener();
+}
+
+/**
  * 支持的监听事件
  * @type {{code, msg, requestCode, token, vendorName}}
  */
@@ -110,6 +118,7 @@ export const RESULT_CODES = {
   600017: 600017, // AppID 、 Appkey 解析失败
   600021: 600021, // 点击登录时检测到运营商已切换
   600024: 600024, // 终端⽀持认证checkAuthEnvEnable回调
+  600025: 600025, // 终端检测参数错误
   700000: 700000, // 点击返回,用户取消免密登录
   700001: 700001, // 点击切换按钮,用户取消免密登录
   700002: 700002, // 点击登录按钮事件
